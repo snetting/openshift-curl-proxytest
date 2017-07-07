@@ -17,16 +17,16 @@ export http_proxy=http://$PROXY_USER:$PROXY_PASS@$PROXY_ADDR:$PROXY_PORT
 
 echo -e "------------------------------------------------\nProxy Test Script - $(date)\n------------------------------------------------"
 while true; do
-	echo -e "Connecting to $TEST_URL via $http_proxy...\n---"
-	curl $TEST_URL 
+	echo "Connecting to $TEST_URL via $http_proxy..."
+	curl -s $TEST_URL 
 	RET=$?
-	echo "---"
 	if [ $RET -eq 0 ]; then
-		echo "Proxy connect succeeded"
+                echo "---"
+		echo "- Proxy connect succeeded"
 	else
-	  	echo "Proxy connect failed"
+	  	echo "- Proxy connect failed"
 	fi
-	echo "- Sleeping $SLEEP_SEC seconds..."
+	echo "Sleeping $SLEEP_SEC seconds..."
 	sleep $SLEEP_SEC
 done
 	
